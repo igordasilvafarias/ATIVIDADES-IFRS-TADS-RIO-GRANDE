@@ -1,0 +1,19 @@
+{
+  "name": "framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/main.js",
+  "types": "./type/main.d.ts",
+  "scripts": {
+    "compile": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@types/sqlite3": "^3.1.6",
+    "sql": "^0.78.0",
+    "typescript": "^4.0.2"
+  }
+}
