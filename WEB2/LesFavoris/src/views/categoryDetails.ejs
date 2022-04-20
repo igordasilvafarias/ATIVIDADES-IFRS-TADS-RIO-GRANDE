@@ -1,0 +1,44 @@
+
+<%- include('./components/head.ejs') %>
+
+  <div class="w3-row w3-padding-64">
+    <div class="w3-twothird w3-container">
+      <h1 class="w3-text-teal">Descrição da Categoria:</h1>
+      <h1>Nome:  <%= category.titulo %> </h1>
+      <h1>Descrição:  <%= category.descricao %> </h1>
+      <h1>Adicionado: <%= category.data.toLocaleDateString() %> - <%= category.data.toLocaleTimeString() %> </h1>
+
+      <h1> <% if(itens.length > 0) { %>  
+        <h1 class="w3-text-teal">Lista Itens</h1>
+      
+                <table>
+                  <thead>
+                    <th>Nome</th>
+                    <th>Adicionado:</th>
+                    <th>Delete</th>
+                  </thead>
+                  <tbody>
+                    <% for(let i = 0; i < itens.length; i++){ %>
+                      <% if(category.id == itens[i].idCategoria) { %> 
+                        <tr>
+                          <td><a href="/itens/<%= i %>/<%= idVet %>"> <%= itens[i].nome %> </a></td>  
+                          <td><%= itens[i].data.toLocaleDateString() %> - <%= itens[i].data.toLocaleTimeString() %> </a></td>  
+                          <td><a href="/itens/deletar/<%= i %>/<%= idVet %>"> DELETAR </a></td>
+                        </tr>
+                      <% } %>
+                    <% } %>
+                  </tbody>
+                </table>
+
+        <h1><a href="/itens/adicionar/<%= category.id %>/<%= idVet %>"> Adicionar Itens </a></h1>
+      <%} else { %> 
+        <a href="/itens/adicionar/<%= category.id %>/<%= idVet %>"> Adicionar Itens </a>
+        <% } %>
+      </h1>
+
+      <h1> <a href="/categorias/lista"> Voltar </a> </h1>
+      
+    </div>
+  </div>
+
+  <%- include('./components/footer.ejs') %>

@@ -1,0 +1,36 @@
+
+<%- include('../components/head.ejs') %>
+<div class="center">
+  <div class="w3-row w3-padding-64">
+      <form method = "POST">
+        <h1 class="title" >Informe os dados abaixo para adicionar um TODO:</h1>
+        <br><br>
+        <label for="name">Informe Nome para o TODO:</label>
+        <input name = "name" id="name" />
+        <br><br>
+        <label for="description">Informe Descrição:</label>
+        <input name = "description" id="description" />
+        <br><br>
+        <% let dateNow = new Date().toLocaleDateString() %>
+        <label for="publishedDate">Informe date de inicio (ex.: 01/01/2021):</label>
+        <input name = "publishedDate" id="publishedDate" value="<%= dateNow %>" />
+        <br><br>
+        <% let hourNow = new Date().toLocaleTimeString() %>
+        <label for="publishedHour">Informe Hora de Inicio (ex.: 13:30):</label>
+        <input name = "publishedHour" id="publishedHour" value="<%= hourNow %>" />
+        <br><br>
+        <label for="taskDeadline">Informe Prazo de Entrega (ex.: 01/01/2021):</label>
+        <input name = "taskDeadline" id="taskDeadline" />
+        <br><br>
+        <label for="taskDeadlineHour">Informe Hora de Entrega (ex.: 13:30):</label>
+        <input name = "taskDeadlineHour" id="taskDeadlineHour" />
+        <br><br><br>
+        <input type = "submit" id="botao" value = "Enviar" />
+     </form>
+     <br><br>
+     <button onclick="location.href='/itens/list'">
+      Voltar
+    </button>
+  </div>
+</div>
+<%- include('../components/footer.ejs') %>

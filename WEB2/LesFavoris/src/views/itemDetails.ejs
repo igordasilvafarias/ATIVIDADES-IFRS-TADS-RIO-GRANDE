@@ -1,0 +1,15 @@
+
+<%- include('./components/head.ejs') %>
+
+  <div class="w3-row w3-padding-64">
+    <div class="w3-twothird w3-container">
+      <h1 class="w3-text-teal">Descrição do Item:</h1>
+      <h1>Nome:  <%= item.nome %> </h1>
+      <h1>Adicionado: <%= item.data.toLocaleDateString() %> - <%= item.data.toLocaleTimeString() %> </h1>
+
+      <h1> <a href="/categorias/<%= idVet %>"> Voltar </a> </h1>
+      
+    </div>
+  </div>
+
+  <%- include('./components/footer.ejs') %>

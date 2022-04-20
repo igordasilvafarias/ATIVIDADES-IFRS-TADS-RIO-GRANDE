@@ -1,0 +1,41 @@
+
+<%- include('../components/head.ejs') %>
+<div class="center">
+  <div class="w3-row w3-padding-64">
+    <% if(item.situation == 'undone') { %>   
+      <form method = "POST">
+        <h1 class="title" >Informe os dados abaixo para alterar seu TODO:</h1>
+        <br><br>
+        <label for="name">Nome do TODO:</label>
+        <input name = "name" id="name" value="<%= item.name %>" />
+        <br><br>
+        <label for="description">Informe Descrição:</label>
+        <input name = "description" id="description" value="<%= item.description %>" />
+        
+        <br><br>
+      
+        <% let taskDate = new Date(item.taskDeadline).toLocaleDateString() %>
+        <label for="taskDeadline">Informe Prazo de Entrega (ex.: 01/01/2021):</label>
+        <input name = "taskDeadline" id="taskDeadline" value="<%= taskDate %>" />
+
+        <br><br>
+
+        <% let taskHour = new Date(item.taskDeadline).toLocaleTimeString() %>
+        <label for="taskDeadlineHour">Informe Hora de Entrega (ex.: 13:30):</label>
+        <input name = "taskDeadlineHour" id="taskDeadlineHour" value="<%= taskHour %>" />
+
+        <br><br><br>
+        <input type = "submit" id="botao" value = "Enviar" />
+     </form>
+      <%} else { %> 
+            Não é possivel atualizar TODO já FINALIZADO!!!
+          <% } %>  
+          <br>
+    <button onclick="location.href='/itens/list'">
+      Voltar
+    </button>
+
+    </div>
+  </div>
+
+  <%- include('../components/footer.ejs') %>

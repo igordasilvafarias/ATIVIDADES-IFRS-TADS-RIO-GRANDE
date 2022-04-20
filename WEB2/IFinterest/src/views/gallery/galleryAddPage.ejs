@@ -1,0 +1,55 @@
+    <!-- HEAD -->
+    <%- include('../components/head.ejs') %>
+    <!-- HEAD -->
+
+<body>
+
+		<!-- NAV -->
+		<%- include('../components/nav.ejs') %>
+		<!-- NAV -->
+
+	<!-- Photos Grid-->
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<div class="panel panel-default">
+					  <div class="panel-heading">
+						<h3 class="panel-title">Galerias</h3>
+					 </div>
+					  <div class="panel-body">
+						<form action="/addGallery" accept-charset="UTF-8" method="POST">
+							<fieldset>
+								<div class="form-group">
+									<label for="inputIdentification" class="mt-2">Identificação (Nome):</label>
+									<input class="form-control" name="identification" type="text" id="inputIdentification" required autofocus>
+										<!-- <% if (locals.userError) { %>
+											<div class="alert alert-danger" role="alert">
+												Usuário <%= locals.name %> não encontrado.
+											</div>
+										<% } %> -->
+								</div>
+								<div class="form-group">
+									<input class="btn btn-lg btn-success btn-block" type="submit" value="Adicionar">
+								</div>
+							</fieldset>
+						</form>
+						<div class="form-group">
+							<input class="btn btn-lg btn-success btn-block" onclick="location.href='/profile'" value="Voltar">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Photos Grid-->
+	
+		<!-- Footer -->
+		<%- include('../components/footer.ejs') %>
+		<!-- Footer -->
+
+	</div>
+
+</body>
+</html>

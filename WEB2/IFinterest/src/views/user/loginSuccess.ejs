@@ -1,0 +1,54 @@
+    <!-- HEAD -->
+    <%- include('../components/head.ejs') %>
+    <!-- HEAD -->
+
+<body>
+
+		<!-- NAV -->
+		<%- include('../components/nav.ejs') %>
+		<!-- NAV -->
+
+	<!-- Photos Grid-->
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Logado com Sucesso</h3>
+					</div>
+					<div class="panel-body">
+							<fieldset>
+								<div class="form-group">
+									<% if (locals.user) { %>
+										<div class="alert alert-success" role="alert">
+											<p class="w3-center"> Seja Bem Vindo <%= locals.user.name %>. </p>
+										</div>
+									<% } %>
+								</div>
+								<div class="form-group">
+									<input class="btn btn-lg btn-success btn-block" onclick="location.href='/image'" value="Imagens">
+								</div>
+								<div class="form-group">
+									<input class="btn btn-lg btn-success btn-block" onclick="location.href='/gallery'" value="Galerias">
+								</div>
+								<div class="form-group">
+									<input class="btn btn-lg btn-success btn-block" onclick="location.href='/logout'" value="Logout">
+								</div>
+							</fieldset>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Photos Grid-->
+	
+		<!-- Footer -->
+		<%- include('../components/footer.ejs') %>
+		<!-- Footer -->
+
+	</div>
+
+</body>
+</html>

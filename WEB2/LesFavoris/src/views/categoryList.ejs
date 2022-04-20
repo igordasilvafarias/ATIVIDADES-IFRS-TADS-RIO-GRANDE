@@ -1,0 +1,42 @@
+
+<%- include('./components/head.ejs') %>
+
+  <div class="w3-row w3-padding-64">
+    <div class="w3-twothird w3-container">
+
+      <% if(categorys.length == 0) { %>
+        <h1 class="w3-text-teal">Lista Categorias Vazia</h1>
+      <% } else { %>
+        <h1 class="w3-text-teal">Lista Categorias</h1>
+        Ordenar categorias por: <br> <a href="/categorias/lista/1"><button>Titulo Crescente</button></a>
+        <a href="/categorias/lista/2"><button>Titulo Decrescente</button></a>
+        <a href="/categorias/lista/3"><button>Data Crescente</button></a>
+        <a href="/categorias/lista/4"><button>Data Decrescente</button></a>
+        <a href="/categorias/lista/5"><button>Itens Crescente</button></a>
+        <a href="/categorias/lista/6"><button>Itens Decrescente</button></a>
+        <br><br> 
+            <table>
+              <thead>
+                <th>Titulo</th>
+                <th>Data</th>
+                <th>Delete</th>
+              </thead>
+              <tbody>
+                <% for(let i = 0; i < categorys.length; i++){ %>
+                    <tr>
+                      <td><a href="/categorias/<%= i %>"> <%= categorys[i].titulo %> </a></td>  
+                      <td><%= categorys[i].data.toLocaleDateString() %> - <%= categorys[i].data.toLocaleTimeString() %></td>
+                      <td><a href="/categorias/deletar/<%= i %>"> DELETAR </a></td>
+                    </tr>
+                <% } %>
+              </tbody>
+            </table>
+
+          <% } %>
+          <br>
+          <h1><a href="/categorias/adicionar"> Adicionar Categoria </a></h1>
+
+    </div>
+  </div>
+
+  <%- include('./components/footer.ejs') %>

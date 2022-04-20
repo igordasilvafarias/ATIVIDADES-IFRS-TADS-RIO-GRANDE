@@ -1,0 +1,45 @@
+<%- include('../components/head.ejs') %>
+
+
+<%- include('../components/nav.ejs') %>
+
+<br>
+<br>
+
+<body onload="resizeAllGridItems()">
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Galerias</h3>
+					</div>
+					<div class="panel-body">
+						<fieldset>
+							<div class="form-group">
+								<input class="btn btn-lg btn-success btn-block" onclick="location.href='/allUserImages'"
+									value="Ver Minhas Imagens">
+							</div>
+							<div class="form-group">
+								<input class="btn btn-lg btn-success btn-block" onclick="location.href='/addImage'"
+									value="Adicionar Imagem">
+							</div>
+							<div class="form-group">
+								<input class="btn btn-lg btn-success btn-block" onclick="location.href='/profile'"
+									value="Voltar">
+							</div>
+						</fieldset>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+<br>
+
+<%- include('../components/footer.ejs') %>
+
+</html>

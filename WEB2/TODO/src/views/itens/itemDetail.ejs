@@ -1,0 +1,62 @@
+
+<%- include('../components/head.ejs') %>
+<div class="center">
+  <div class="w3-row w3-padding-64">
+      <h1 class="w3-text-teal">Detalhes do TODO</h1>
+      <h1>Nome:  <font color="gray"> <%= item.name %> </font></h1>
+      <h1>Descrição:  <font color="gray"> <%= item.description %> </font></h1>
+      
+                <table>
+                  <thead>
+                    <th>Inicio TODO</th>
+                    <th>Prazo TODO</th>
+                    <th>Data de Finalização</th>
+                    <th>Data de Atualização</th>
+                    <th>Situação</th>
+                  </thead>
+                  <tbody>
+
+                        <tr>
+                          <% let publishedDate = new Date(item.publishedDate) %>
+
+                          <td><%= publishedDate.toLocaleDateString() %> - <%= publishedDate.toLocaleTimeString() %></td> 
+                          <td><%= item.taskDeadline.toLocaleDateString() %> - <%= item.taskDeadline.toLocaleTimeString() %></td>
+
+                          <% let finishedDate = new Date(item.finishedDate) %>
+                          <% if(finishedDate > 0) { %>   
+                            <td><%= finishedDate.toLocaleDateString() %> - <%= finishedDate.toLocaleTimeString() %></td>
+                          <%} else { %> 
+                                <td>Não</td>
+                              <% } %>
+
+                          <% let updatedDate = new Date(item.updatedDate) %>
+                          <% if(updatedDate > 0) { %>   
+                              <td><%= updatedDate.toLocaleDateString() %> - <%= updatedDate.toLocaleTimeString() %></td>
+                          <%} else { %> 
+                                <td>Não</td>
+                              <% } %>
+
+                          <% if(item.situation == "done") { %>   
+                              <td>Finalizado%></td>
+                          <%} else { %> 
+                                <% let today = new Date().getTime() %>
+                                <% if(item.taskDeadline < today && item.situation == 'undone') { %>   
+                                    <td><font color="red"> Atrasado </font></td>
+                                <%} else { %> 
+                                      <td><font color="blue"> Em Aberto </font></td>
+                                    <% } %>
+                              <% } %>
+                        </tr>
+                      
+
+                  </tbody>
+                </table>
+
+                <button onclick="location.href='/'">
+                  Voltar
+                </button>
+      
+    </div>
+  </div>
+
+  <%- include('../components/footer.ejs') %>

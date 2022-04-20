@@ -1,0 +1,39 @@
+<%- include('./components/head.ejs') %>
+
+<div class="center">
+  <div class="w3-padding-64">
+
+        <h1 class="w3-text-teal">Login & Cadastro</h1>
+        <% if(locals.loggedIn) { %>  
+          <p> Bem vindo, <%= name %> ! </p>
+          
+          <% if(name != "admin") { %>
+            <p> Listar / Inserir TODO's </p>
+                      <button onclick="location.href='/itens/list'">
+                        LISTAR
+                      </button>
+                      <button onclick="location.href='/itens/insert'">
+                        INSERIR
+                      </button>
+          <% } else { %>
+                <p> Listar Todos os TODO's </p>
+                <button onclick="location.href='/itens/list'">
+                  LISTAR
+                </button>
+          <% } %>
+
+        <% } else { %>
+                    <p> Faca o seu Login </p>
+                    <button onclick="location.href='/user/login'">
+                      Login
+                    </button>
+                    <br>
+                    <p> Faca o seu cadastro </p>
+                    <button onclick="location.href='/user/signup'">
+                      Cadastro
+                    </button>
+                  <% } %>
+                  
+  </div>
+</div>
+  <%- include('./components/footer.ejs') %>

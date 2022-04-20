@@ -1,0 +1,80 @@
+
+<%- include('../components/head.ejs') %>
+<div class="center">
+  <div class="w3-row w3-padding-64">
+      <% if(itens.length == 0) { %>
+        <h1 class="w3-text-teal">Lista itens Vazia</h1>
+      <% } else { %>
+        <h1 class="w3-text-teal">Lista de TODO's</h1>
+
+            <table>
+              <thead>
+                <th>Nome</th>
+                <th>Situação</th>
+                <th>Atualizar</th>
+                <th>Delete</th>
+                <th>Finalizar</th>
+              </thead>
+              <tbody>
+                <% for(let i = 0; i < itens.length; i++){ %>
+                    <tr>
+                      <td><a href="/itens/<%= itens[i].id %>"> <%= itens[i].name %> </a></td>
+
+                      <% if(itens[i].situation == "done") { %>   
+                        <td><font color="green"> Finalizado </font></td>
+                      <%} else { %> 
+                          <% let today = new Date().getTime() %>
+                          <% if(itens[i].taskDeadline < today && itens[i].situation == 'undone') { %>   
+                              <td><font color="red"> Atrasado </font></td>
+                          <%} else { %> 
+                                <td><font color="blue"> Em Aberto </font></td>
+                              <% } %>
+                        <% } %>
+
+                      <% if(itens[i].situation == "done") { %>   
+                          <td>ATUALIZAR</td>
+                      <% } else { %> 
+                            <td><a href="/itens/update/<%= itens[i].id %>"> ATUALIZAR </a></td>
+                          <% } %>
+
+                      <td><a href="/itens/delete/<%= itens[i].id %>"> DELETAR </a></td>
+
+                      <% if(itens[i].situation == "done") { %>   
+                        <td>FINALIZAR</td>
+                      <% } else { %> 
+                        <td><a href="/itens/updateSituation/<%= itens[i].id %>"> FINALIZAR </a></td>
+                          <% } %>
+                      
+                    </tr>
+                <% } %>
+              </tbody>
+            </table>
+
+          <% } %>
+          <br>
+          <div class="pagination">
+            <a href="">&laquo;</a>
+            <% let iaux = 1  %>
+            <% let incPage = 0 %>
+          <% for(let i = 0; i <= length; i = i+5){ %>
+            <% let auxLimit = 5 %>
+            <% let inc = iaux++ %>
+            <a href="/itens/list?page=<%= incPage %> %>&limit=<%= auxLimit %>"><%= inc %></a>
+            <% incPage = incPage + 5 %>
+          <% } %>
+            <a href="">&raquo;</a>
+          </div>
+          <br>
+
+          <button onclick="location.href='/itens/insert'">
+            Novo TODO
+          </button>
+
+          <button onclick="location.href='/'">
+            Voltar
+          </button>
+
+    </div>
+  </div>
+
+  <%- include('../components/footer.ejs') %>

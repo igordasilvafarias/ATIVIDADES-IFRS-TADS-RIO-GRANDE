@@ -1,0 +1,67 @@
+
+<%- include('../components/head.ejs') %>
+<div class="center">
+  <div class="w3-row w3-padding-64">
+
+      <% if(itens.length == 0) { %>
+        <h1 class="w3-text-teal">Lista itens Vazia</h1>
+      <% } else { %>
+        <h1 class="w3-text-teal">Lista de TODO's</h1>
+
+            <table>
+              <thead>
+                <th>E-mail</th>
+                <th>Descrição</th>
+                <th>Prazo</th>
+              </thead>
+              <tbody>
+                <% for(let i = 0; i < itens.length; i++){ %>
+                    <tr>
+                      
+                      <!-- E-MAIL -->
+                      <% let inc = i%>
+                      <% for(let i = 0; i < users.length; i++){ %>
+                        <% if(itens[inc].userID == users[i].id) { %>
+                          <td> <a href="/itens/<%= itens[inc].id %>"> <%= users[i].email %> %> </a> </td>
+                        <% } %>
+                      <% } %>
+                      <!-- E-MAIL -->
+                      
+                      <!-- DESCRIPTION -->
+                      <td><%= itens[i].description %></td>
+                      <!-- DESCRIPTION -->
+
+                      <!-- TASKDEADLINE -->
+                      <% let taskDeadline = new Date(itens[i].taskDeadline) %>
+                      <td><%= taskDeadline.toLocaleDateString() %></td>
+                     <!-- TASKDEADLINE -->
+
+                    </tr>
+                <% } %>
+              </tbody>
+            </table>
+
+          <% } %>
+          <br>
+          <br>
+          <button class="center" onclick="location.href='/'">
+            Voltar
+          </button>
+
+          <div class="pagination" >
+            <a href="">&laquo;</a>
+            <% let iaux = 1  %>
+            <% let incPage = 0 %>
+          <% for(let i = 0; i < length; i = i+5){ %>
+            <% let auxLimit = 5 %>
+            <% let inc = iaux++ %>
+            <a href="/itens/list?page=<%= incPage %> %>&limit=<%= auxLimit %>"><%= inc %></a>
+            <% incPage = incPage + 5 %>
+          <% } %>
+            <a href="">&raquo;</a>
+          </div>
+
+    </div>
+  </div>
+
+  <%- include('../components/footer.ejs') %>
