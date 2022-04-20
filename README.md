@@ -21,3 +21,4 @@ Linguagem utilizada nas atividades em ambas as disciplinas foi a TypeScript.
     - Em cada atividade estará disponivel um "README" descrevendo a atividade e seus desafios.
 
 --- WEB2 (DESENVOLVIMENTO PARA WEB II) ---
+
